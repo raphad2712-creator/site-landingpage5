@@ -30,6 +30,7 @@
 
 /* Detalhes dos patrocinadores, sem alterar a composição do material original. */
 .sponsor-card{display:flex;flex-direction:column;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease}
+.sponsor-card[data-direct-link]{cursor:default}
 .sponsor-card:hover,.sponsor-card:focus-within{box-shadow:0 8px 26px #3b2a161c;transform:translateY(-2px)}
 .sponsor-card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}
 .sponsor-more{align-self:flex-start;margin-top:auto;padding:9px 0 0;border:0;background:transparent;color:var(--green);font:700 10px/1.2 Montserrat,Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}
@@ -47,6 +48,6 @@
 .sponsor-dialog p{font:400 clamp(13px,2vw,15px)/1.7 Montserrat,Arial,sans-serif;margin:0}
 .dialog-site{display:inline-block;margin-top:25px;padding:11px 19px;border-radius:30px;background:var(--green);color:#fff;font:600 12px Montserrat,Arial,sans-serif}
 .dialog-site[hidden],.dialog-image[hidden]{display:none}
-@media(max-width:760px){.guest-photo{aspect-ratio:728/670;min-height:0}.guest-photo>img{object-fit:cover;object-position:center}.sponsor-more{font-size:11px}}
+@media(max-width:760px){.guest-photo{aspect-ratio:728/670;min-height:0}.guest-photo>img{object-fit:cover;object-position:center}.sponsor-more{font-size:11px}.closing{height:240px;padding:28px 18px}.closing h2{width:min(100%,500px);padding:0;font-size:clamp(24px,7.5vw,34px);line-height:1.08}}
 @media(max-width:540px){.dialog-inner{padding:30px 22px}.sponsor-card p{-webkit-line-clamp:4;line-clamp:4}}
 @media(max-width:390px){.guest-photo{min-height:0}}
