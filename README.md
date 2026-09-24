@@ -5,3 +5,5 @@ Landing page estática baseada no PDF fornecido, pronta para GitHub Pages. Abra 
 As imagens e marcas vieram do material enviado. A data e o horário do evento não aparecem no site. O botão de presença prepara uma mensagem para o número de WhatsApp divulgado no site oficial da Perfeita Plástica; o visitante precisa enviá-la para entrar em contato. A página não armazena inscrições.
 
 Em **Settings → Pages** no GitHub, selecione **Deploy from a branch**, branch `main` e pasta `/ (root)`.
+
+Os cartões de patrocinadores abrem um popup com o texto completo. Para exibir o botão de visita no popup, acrescente `data-site="https://site-do-parceiro.com.br"` ao `<article class="sponsor-card">` correspondente no `index.html`. Os links não foram preenchidos porque não constam do material recebido.
