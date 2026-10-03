@@ -26,7 +26,7 @@ let sponsorTrigger;
 
 document.querySelectorAll('.sponsor-card:not([data-direct-link])').forEach(card => card.addEventListener('click', () => {
   sponsorTrigger = card.querySelector('.sponsor-more');
-  dialogBrand.replaceChildren(card.querySelector('.operah-logo, .logo-placeholder').cloneNode(true));
+  dialogBrand.replaceChildren(card.querySelector('.operah-logo, .brand-logo, .logo-placeholder').cloneNode(true));
   const photo = card.querySelector('.sponsor-photo');
   dialogImage.replaceChildren(...(photo ? [photo.cloneNode(true)] : []));
   dialogImage.hidden = !photo;
