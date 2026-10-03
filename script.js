@@ -12,9 +12,38 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   nav.classList.remove('open');
 }));
 const slider = document.querySelector('#partners-track');
+const sliderItems = Array.from(slider.querySelectorAll('.partner-item'));
+const previousButton = document.querySelector('.slider-arrow[data-direction="-1"]');
+const nextButton = document.querySelector('.slider-arrow[data-direction="1"]');
+let sliderIndex = 0;
+
+const visibleLogoCount = () => window.matchMedia('(max-width: 760px)').matches ? 2 : 4;
+const updateSlider = (behavior = 'smooth') => {
+  const maxIndex = Math.max(0, sliderItems.length - visibleLogoCount());
+  sliderIndex = Math.min(Math.max(sliderIndex, 0), maxIndex);
+  const firstOffset = sliderItems[0]?.offsetLeft || 0;
+  const targetOffset = (sliderItems[sliderIndex]?.offsetLeft || firstOffset) - firstOffset;
+  slider.scrollTo({left: targetOffset, behavior});
+  previousButton.disabled = sliderIndex === 0;
+  nextButton.disabled = sliderIndex === maxIndex;
+};
+
 document.querySelectorAll('.slider-arrow').forEach(button => button.addEventListener('click', () => {
-  slider.scrollBy({left: Number(button.dataset.direction) * slider.clientWidth * .55, behavior: 'smooth'});
+  sliderIndex += Number(button.dataset.direction) * visibleLogoCount();
+  updateSlider();
 }));
+slider.addEventListener('keydown', event => {
+  if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  event.preventDefault();
+  sliderIndex += event.key === 'ArrowRight' ? 1 : -1;
+  updateSlider();
+});
+window.addEventListener('resize', () => updateSlider('auto'));
+window.addEventListener('pageshow', () => {
+  sliderIndex = 0;
+  updateSlider('auto');
+});
+updateSlider('auto');
 
 const sponsorDialog = document.querySelector('#sponsor-dialog');
 const dialogBrand = document.querySelector('#sponsor-dialog-brand');

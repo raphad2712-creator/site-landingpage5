@@ -82,3 +82,35 @@
 @media(max-width:540px){
   .operah-logo,.brand-logo{width:155px;height:45px}
 }
+
+/* Carrossel sem cortes laterais e cartões compactos com descrições reais. */
+.partners-slider{display:grid;grid-template-columns:auto minmax(0,1fr) auto}
+.partners-track{width:100%;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior-x:contain}
+.partner-item{min-width:0;scroll-snap-stop:always}
+.slider-arrow:disabled{opacity:.38;cursor:not-allowed;background:transparent;color:var(--taupe)}
+.sponsors{padding-top:24px}
+.sponsor-grid{align-items:stretch}
+.sponsor-card{min-height:260px;gap:12px;padding:20px 22px}
+.sponsor-head{height:82px;justify-content:center;gap:8px}
+.sponsor-head h3{margin-top:0;font-size:12px;line-height:1.3;letter-spacing:-.02em}
+.sponsor-card p{display:block;overflow:visible;font-size:12px;line-height:1.55;letter-spacing:0}
+.sponsor-photo{height:105px;margin:0;object-fit:cover}
+.sponsor-more{padding-top:5px}
+@media(min-width:1200px){
+  .sponsor-card{min-height:340px;padding:24px 26px}
+  .sponsor-head{height:100px}
+  .sponsor-head h3{font-size:14px}
+  .sponsor-card p{font-size:13px}
+}
+@media(max-width:760px){
+  .partners-slider{grid-template-columns:74px minmax(0,1fr) 74px;gap:8px;width:calc(100% - 20px)}
+  .slider-arrow{width:74px;padding:9px 5px}
+  .sponsor-card{min-height:0}
+}
+@media(max-width:540px){
+  .sponsor-card{padding:22px;gap:14px}
+  .sponsor-head{height:92px}
+  .sponsor-head h3{font-size:14px}
+  .sponsor-card p{font-size:14px;line-height:1.6}
+  .sponsor-photo{height:145px}
+}
