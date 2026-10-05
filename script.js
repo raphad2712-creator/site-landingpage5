@@ -60,7 +60,12 @@ document.querySelectorAll('.sponsor-card:not([data-direct-link])').forEach(card 
   dialogImage.replaceChildren(...(photo ? [photo.cloneNode(true)] : []));
   dialogImage.hidden = !photo;
   dialogTitle.textContent = card.querySelector('h3').textContent;
-  dialogDescription.replaceChildren(...Array.from(card.querySelector('p').childNodes, node => node.cloneNode(true)));
+  const fullDescription = card.querySelector('.sponsor-full');
+  if (fullDescription) {
+    dialogDescription.replaceChildren(...Array.from(fullDescription.children, node => node.cloneNode(true)));
+  } else {
+    dialogDescription.replaceChildren(card.querySelector('p').cloneNode(true));
+  }
 
   // Partner URLs can be supplied per card with data-site="https://...".
   const site = card.dataset.site;
