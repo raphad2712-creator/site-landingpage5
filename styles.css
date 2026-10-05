@@ -114,3 +114,10 @@
   .sponsor-card p{font-size:14px;line-height:1.6}
   .sponsor-photo{height:145px}
 }
+
+/* Textos completos enviados para os parceiros. */
+.sponsor-full[hidden]{display:none}
+.dialog-description{display:grid;gap:14px}
+.dialog-description p{font:400 clamp(13px,2vw,15px)/1.7 Montserrat,Arial,sans-serif;margin:0}
+.partner-text-logo{font:700 20px/1 Montserrat,Arial,sans-serif;letter-spacing:.04em;color:#153f52;text-transform:uppercase}
+@media(max-width:540px){.partner-text-logo{font-size:16px}}
