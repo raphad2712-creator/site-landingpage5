@@ -17,7 +17,7 @@ const previousButton = document.querySelector('.slider-arrow[data-direction="-1"
 const nextButton = document.querySelector('.slider-arrow[data-direction="1"]');
 let sliderIndex = 0;
 
-const visibleLogoCount = () => window.matchMedia('(max-width: 760px)').matches ? 2 : 4;
+const visibleLogoCount = () => window.matchMedia('(max-width: 760px)').matches ? 1 : 4;
 const updateSlider = (behavior = 'smooth') => {
   const maxIndex = Math.max(0, sliderItems.length - visibleLogoCount());
   sliderIndex = Math.min(Math.max(sliderIndex, 0), maxIndex);

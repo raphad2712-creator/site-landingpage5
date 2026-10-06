@@ -62,36 +62,36 @@
   scroll-snap-align:start;
   background:transparent;
 }
-.partner-item img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
-.partner-item .partner-logo--operah{width:100%;height:100%;mix-blend-mode:normal}
-.partner-item .partner-logo--santa-rita{width:100%;height:100%}
-.partner-item .partner-logo--laser{width:100%;height:100%}
+.partner-item img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}
+.partner-item .partner-logo--operah{width:auto;height:auto;max-width:100%;max-height:100%;mix-blend-mode:normal}
+.partner-item .partner-logo--santa-rita{width:auto;height:auto;max-width:100%;max-height:100%}
+.partner-item .partner-logo--laser{width:auto;height:auto;max-width:100%;max-height:100%}
 .partner-item .biobela-logo{object-fit:contain;object-position:center}
 .operah-logo,.brand-logo{
-  width:200px;
-  height:68px;
+  width:240px;
+  height:92px;
   max-height:none;
   object-fit:contain;
   mix-blend-mode:multiply;
 }
 .operah-logo{mix-blend-mode:normal}
-.brand-logo--santa-rita{width:220px;height:76px}
-.brand-logo--laser{width:205px;height:86px}
+.brand-logo--santa-rita{width:260px;height:100px}
+.brand-logo--laser{width:225px;height:104px}
 .brand-logo.biobela-logo{object-fit:contain;object-position:center}
 .dialog-brand .operah-logo,.dialog-brand .brand-logo{width:180px;height:60px}
 @media(min-width:1200px){
-  .partner-item{height:118px}
-  .operah-logo,.brand-logo{width:235px;height:78px}
-  .brand-logo--santa-rita{width:265px;height:90px}
-  .brand-logo--laser{width:225px;height:96px}
+  .partner-item{height:128px}
+  .operah-logo,.brand-logo{width:285px;height:104px}
+  .brand-logo--santa-rita{width:305px;height:112px}
+  .brand-logo--laser{width:255px;height:116px}
 }
 @media(max-width:760px){
-  .partner-item{flex-basis:calc((100% - 12px)/2);height:88px;padding:4px 7px}
+  .partner-item{flex-basis:100%;height:118px;padding:6px 10px}
 }
 @media(max-width:540px){
-  .operah-logo,.brand-logo{width:200px;height:68px}
-  .brand-logo--santa-rita{width:225px;height:78px}
-  .brand-logo--laser{width:205px;height:86px}
+  .operah-logo,.brand-logo{width:240px;height:92px}
+  .brand-logo--santa-rita{width:260px;height:100px}
+  .brand-logo--laser{width:225px;height:104px}
 }
 
 /* Carrossel sem cortes laterais e cartões compactos com descrições reais. */
@@ -102,25 +102,28 @@
 .sponsors{padding-top:24px}
 .sponsor-grid{align-items:stretch}
 .sponsor-card{min-height:260px;gap:12px;padding:20px 22px}
-.sponsor-head{height:112px;justify-content:center;gap:8px}
+.sponsor-head{height:150px;justify-content:center;gap:10px}
 .sponsor-head h3{margin-top:0;font-size:12px;line-height:1.3;letter-spacing:-.02em}
 .sponsor-card p{display:block;overflow:visible;font-size:12px;line-height:1.55;letter-spacing:0}
 .sponsor-photo{height:105px;margin:0;object-fit:cover}
 .sponsor-more{padding-top:5px}
 @media(min-width:1200px){
   .sponsor-card{min-height:340px;padding:24px 26px}
-  .sponsor-head{height:132px}
+  .sponsor-head{height:168px}
   .sponsor-head h3{font-size:14px}
   .sponsor-card p{font-size:13px}
 }
 @media(max-width:760px){
-  .partners-slider{grid-template-columns:74px minmax(0,1fr) 74px;gap:8px;width:calc(100% - 20px)}
-  .slider-arrow{width:74px;padding:9px 5px}
+  .partners-slider{grid-template-columns:46px minmax(0,1fr) 46px;gap:6px;width:calc(100% - 16px)}
+  .partners-track{overflow-x:auto;scroll-snap-type:x mandatory;touch-action:pan-x}
+  .slider-arrow{width:46px;height:40px;padding:0;font-size:0}
+  .slider-arrow::before{content:'›';font:400 30px/1 Arial,sans-serif}
+  .slider-arrow[data-direction="-1"]::before{content:'‹'}
   .sponsor-card{min-height:0}
 }
 @media(max-width:540px){
   .sponsor-card{padding:22px;gap:14px}
-  .sponsor-head{height:122px}
+  .sponsor-head{height:158px}
   .sponsor-head h3{font-size:14px}
   .sponsor-card p{font-size:14px;line-height:1.6}
   .sponsor-photo{height:145px}
