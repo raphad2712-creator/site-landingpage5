@@ -53,22 +53,21 @@ const dialogDescription = document.querySelector('#sponsor-dialog-description');
 const dialogSite = document.querySelector('#sponsor-dialog-site');
 let sponsorTrigger;
 
-document.querySelectorAll('.sponsor-card:not([data-direct-link])').forEach(card => card.addEventListener('click', () => {
-  sponsorTrigger = card.querySelector('.sponsor-more');
-  dialogBrand.replaceChildren(card.querySelector('.operah-logo, .brand-logo, .logo-placeholder').cloneNode(true));
-  const photo = card.querySelector('.sponsor-photo');
-  dialogImage.replaceChildren(...(photo ? [photo.cloneNode(true)] : []));
-  dialogImage.hidden = !photo;
-  dialogTitle.textContent = card.querySelector('h3').textContent;
-  const fullDescription = card.querySelector('.sponsor-full');
-  if (fullDescription) {
-    dialogDescription.replaceChildren(...Array.from(fullDescription.children, node => node.cloneNode(true)));
-  } else {
-    dialogDescription.replaceChildren(card.querySelector('p').cloneNode(true));
-  }
+const openPartnerDialog = trigger => {
+  const partner = trigger.dataset.partner;
+  const template = document.querySelector(`#partner-${partner}`);
+  if (!template) return;
 
-  // Partner URLs can be supplied per card with data-site="https://...".
-  const site = card.dataset.site;
+  sponsorTrigger = trigger.matches('button, a') ? trigger : trigger.querySelector('.sponsor-more') || trigger;
+  const card = trigger.closest('.sponsor-card') || document.querySelector(`.sponsor-card[data-partner="${partner}"]`);
+  const logo = trigger.querySelector('img') || card?.querySelector('img');
+  dialogBrand.replaceChildren(...(logo ? [logo.cloneNode(true)] : []));
+  dialogImage.replaceChildren();
+  dialogImage.hidden = true;
+  dialogTitle.textContent = template.dataset.title;
+  dialogDescription.replaceChildren(template.content.cloneNode(true));
+
+  const site = card?.dataset.site;
   const validSite = site && /^https:\/\//i.test(site);
   dialogSite.hidden = !validSite;
   if (validSite) dialogSite.href = site;
@@ -76,7 +75,14 @@ document.querySelectorAll('.sponsor-card:not([data-direct-link])').forEach(card 
 
   sponsorDialog.showModal();
   sponsorDialog.querySelector('.dialog-close').focus();
-}));
+};
+
+document.querySelectorAll('.partner-item[data-partner]').forEach(item => {
+  item.addEventListener('click', () => openPartnerDialog(item));
+});
+document.querySelectorAll('.sponsor-card[data-partner]').forEach(card => {
+  card.addEventListener('click', () => openPartnerDialog(card));
+});
 sponsorDialog.querySelector('.dialog-close').addEventListener('click', () => sponsorDialog.close());
 sponsorDialog.addEventListener('click', event => {
   if (event.target === sponsorDialog) sponsorDialog.close();

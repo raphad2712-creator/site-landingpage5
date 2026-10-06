@@ -62,7 +62,11 @@
   overflow:hidden;
   scroll-snap-align:start;
   background:transparent;
+  border:0;
+  font:inherit;
 }
+.partner-item[data-partner]{cursor:pointer;border-radius:8px;transition:background .2s ease,transform .2s ease}
+.partner-item[data-partner]:hover,.partner-item[data-partner]:focus-visible{background:#fff;transform:translateY(-2px)}
 .partner-item img{width:auto;height:auto;max-width:100%;max-height:72px;object-fit:contain;mix-blend-mode:multiply}
 .partner-item .partner-logo--operah{max-width:190px;max-height:64px;mix-blend-mode:normal}
 .partner-item .partner-logo--santa-rita{max-width:190px;max-height:76px}
@@ -79,7 +83,7 @@
 .brand-logo--santa-rita{width:260px;height:100px}
 .brand-logo--laser{width:225px;height:104px}
 .brand-logo.biobela-logo{object-fit:contain;object-position:center}
-.dialog-brand .operah-logo,.dialog-brand .brand-logo{width:180px;height:60px}
+.dialog-brand img,.dialog-brand .operah-logo,.dialog-brand .brand-logo{width:180px;height:60px;object-fit:contain;object-position:left center}
 @media(min-width:1200px){
   .partner-item{height:128px}
   .partner-item img{max-height:92px}
