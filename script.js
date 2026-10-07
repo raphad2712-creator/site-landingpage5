@@ -70,8 +70,15 @@ const openPartnerDialog = trigger => {
   const site = card?.dataset.site;
   const validSite = site && /^https:\/\//i.test(site);
   dialogSite.hidden = !validSite;
-  if (validSite) dialogSite.href = site;
-  else dialogSite.removeAttribute('href');
+  if (validSite) {
+    dialogSite.href = site;
+    dialogSite.textContent = card.dataset.linkLabel || 'Conhecer o site do parceiro';
+    dialogSite.setAttribute('aria-label', card.dataset.linkLabel || 'Conhecer o site do parceiro');
+  } else {
+    dialogSite.removeAttribute('href');
+    dialogSite.textContent = 'Conhecer o site do parceiro';
+    dialogSite.removeAttribute('aria-label');
+  }
 
   sponsorDialog.showModal();
   sponsorDialog.querySelector('.dialog-close').focus();
